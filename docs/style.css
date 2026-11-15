@@ -1,0 +1,235 @@
+:root {
+  --navy: #0b1f3a;
+  --navy-2: #102a4c;
+  --card: #16325a;
+  --card-2: #1c3c66;
+  --light: #e8edf4;
+  --gray: #9aa7b8;
+  --accent: #2ea8e0;
+  --green: #2ec47a;
+  --amber: #f2a72b;
+  --red: #e04b4b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Calibri, Arial, sans-serif;
+  background: var(--navy);
+  color: var(--light);
+}
+
+header {
+  padding: 22px 32px 14px;
+  border-bottom: 1px solid #1d3a63;
+}
+
+header .kicker {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+header h1 {
+  margin: 4px 0 2px;
+  font-size: 26px;
+}
+
+header p {
+  margin: 0;
+  color: var(--gray);
+  font-size: 13.5px;
+}
+
+nav.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 14px 32px 0;
+}
+
+nav.tabs button {
+  background: var(--card);
+  color: var(--light);
+  border: 1px solid transparent;
+  padding: 10px 18px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+nav.tabs button.active {
+  background: var(--navy-2);
+  border: 1px solid var(--accent);
+  border-bottom: 1px solid var(--navy-2);
+  color: var(--accent);
+}
+
+main {
+  padding: 22px 32px 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.view { display: none; }
+.view.active { display: block; }
+
+.grid-2 { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.card.outline {
+  background: var(--navy-2);
+  border: 1px solid var(--accent);
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Portfolio list */
+.portfolio-list { display: flex; flex-direction: column; gap: 8px; }
+.portfolio-item {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.portfolio-item:hover { border-color: var(--accent); }
+.portfolio-item.selected { border-color: var(--accent); background: var(--card-2); }
+.portfolio-item .name { font-weight: 700; font-size: 13.5px; }
+.portfolio-item .squad { color: var(--gray); font-size: 11.5px; }
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+.badge.bajo { background: var(--green); color: var(--navy); }
+.badge.medio { background: var(--amber); color: var(--navy); }
+.badge.crítico { background: var(--red); color: white; }
+
+/* Health score */
+.score-row { display: flex; align-items: center; gap: 24px; margin-bottom: 18px; }
+.score-big { font-size: 48px; font-weight: 800; color: var(--accent); }
+.score-sub { color: var(--gray); font-size: 12px; }
+
+.dim-row { margin-bottom: 14px; }
+.dim-label { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px; }
+.bar-track { background: #22395c; border-radius: 6px; height: 12px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s ease; }
+
+/* Readiness */
+.readiness-top { display: flex; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.stat-card { background: var(--navy-2); border-radius: 10px; padding: 14px 18px; min-width: 150px; }
+.stat-card .val { font-size: 26px; font-weight: 800; }
+.stat-card .lbl { font-size: 11px; color: var(--gray); text-transform: uppercase; }
+
+.status-pill {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.status-pill.ready { background: var(--green); color: var(--navy); }
+.status-pill.conditional { background: var(--amber); color: var(--navy); }
+.status-pill.notready { background: var(--red); color: white; }
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--navy-2);
+  margin-bottom: 6px;
+}
+.checklist-item input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+.checklist-item label { font-size: 12.5px; cursor: pointer; }
+.checklist-item .cat-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-left: auto;
+  white-space: nowrap;
+}
+.checklist-item.blocker-unmet { border-left: 3px solid var(--red); }
+.checklist-item.blocker-met { border-left: 3px solid var(--green); }
+
+.blocker-box {
+  background: #3a1e1e;
+  border: 1px solid var(--red);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+.blocker-box.empty { background: #1a3a2e; border-color: var(--green); }
+.blocker-box ul { margin: 6px 0 0; padding-left: 18px; font-size: 12px; }
+
+/* Assessment form */
+.form-row { margin-bottom: 16px; }
+.form-row label.title { display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
+.chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: var(--navy-2);
+  border: 1px solid #2a4468;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.chip.selected { background: var(--accent); color: var(--navy); border-color: var(--accent); font-weight: 700; }
+select {
+  background: var(--navy-2);
+  color: var(--light);
+  border: 1px solid #2a4468;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+}
+
+.result-box { text-align: center; padding: 24px; }
+.result-box .big { font-size: 40px; font-weight: 800; }
+
+table.gov-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+table.gov-table th, table.gov-table td {
+  border: 1px solid #22395c;
+  padding: 8px 10px;
+  text-align: left;
+}
+table.gov-table th { background: var(--navy-2); color: var(--accent); }
+table.gov-table td.center { text-align: center; font-weight: 700; }
+
+.note {
+  font-size: 11px;
+  color: var(--gray);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  color: var(--gray);
+  font-size: 11px;
+  padding: 20px;
+}

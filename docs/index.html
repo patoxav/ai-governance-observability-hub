@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Governance Observability Hub — Demo MVP</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="kicker">MVP · Demo funcional sobre datos sintéticos</div>
+  <h1>AI Governance Observability Hub</h1>
+  <p>Gobierno existente + evidencias → AI Health, Riesgo y Certification Readiness, en vivo.</p>
+</header>
+
+<nav class="tabs">
+  <button data-view="portfolio" class="active">Governance Observatory</button>
+  <button data-view="readiness">Certification Readiness</button>
+  <button data-view="assessment">Assessment</button>
+  <button data-view="artifacts">Artefactos de Gobierno</button>
+</nav>
+
+<main>
+
+  <!-- VIEW 1: PORTFOLIO / GOVERNANCE OBSERVATORY -->
+  <section id="view-portfolio" class="view active">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Portafolio de iniciativas (sintético)</span>
+        <div class="portfolio-list" id="portfolio-list"></div>
+      </div>
+      <div class="card" id="observatory-panel"></div>
+    </div>
+  </section>
+
+  <!-- VIEW 2: CERTIFICATION READINESS -->
+  <section id="view-readiness" class="view">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Selecciona iniciativa</span>
+        <div class="portfolio-list" id="portfolio-list-2"></div>
+        <p class="note">Marca/desmarca evidencias para ver cómo cambia el Readiness Score y los bloqueantes — en tiempo real.</p>
+      </div>
+      <div class="card" id="readiness-panel"></div>
+    </div>
+  </section>
+
+  <!-- VIEW 3: ASSESSMENT -->
+  <section id="view-assessment" class="view">
+    <div class="grid-2">
+      <div class="card">
+        <span class="section-label">Caracterización de la iniciativa</span>
+        <div class="form-row">
+          <label class="title">¿Qué patrones usa?</label>
+          <div class="chip-group" id="chip-patterns">
+            <div class="chip" data-val="RAG">RAG</div>
+            <div class="chip" data-val="MCP">MCP</div>
+            <div class="chip" data-val="Agentic">Agentes</div>
+            <div class="chip" data-val="Voz">Voz</div>
+            <div class="chip" data-val="Multiagente">Multiagente</div>
+            <div class="chip" data-val="Clasificación">Clasificación</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="title">¿Maneja datos sensibles?</label>
+          <select id="sel-datos">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="title">Impacto financiero</label>
+          <select id="sel-impacto">
+            <option>Bajo</option>
+            <option>Medio</option>
+            <option>Alto</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="title">Nivel de autonomía</label>
+          <select id="sel-autonomia">
+            <option>Asistido</option>
+            <option>Semi-autónomo</option>
+            <option>Autónomo</option>
+          </select>
+        </div>
+      </div>
+      <div class="card" id="assessment-result"></div>
+    </div>
+  </section>
+
+  <!-- VIEW 4: ARTEFACTOS DE GOBIERNO -->
+  <section id="view-artifacts" class="view">
+    <div class="card" style="margin-bottom:16px;">
+      <span class="section-label">Quality Gate — pesos y umbral por dimensión</span>
+      <table class="gov-table" id="gate-table"></table>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <span class="section-label">RACI — responsabilidades del proceso</span>
+      <table class="gov-table" id="raci-table"></table>
+    </div>
+    <div class="card">
+      <span class="section-label">Checklist de evidencias por framework (extracto)</span>
+      <div id="checklist-artifact"></div>
+      <p class="note">Extensibilidad: agregar un nuevo framework (p. ej. Voz) consiste en declarar su checklist en data.js; el motor de cálculo (engine.js) no cambia.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>AI Governance Observability Hub · MVP de demostración · Datos sintéticos · Foro QA Senior 2026</footer>
+
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
