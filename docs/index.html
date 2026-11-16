@@ -90,7 +90,28 @@
           </select>
         </div>
       </div>
-      <div class="card" id="assessment-result"></div>
+      <div>
+        <div class="card" id="assessment-result"></div>
+        <div class="card llm-box">
+          <span class="section-label">Escenarios generados por IA (opcional · diferenciador)</span>
+          <p class="note">Usa tu propia API key (compatible con OpenAI Chat Completions). Solo se envían metadatos del Assessment — tipo de solución, perfil de riesgo, dimensión/métrica/umbral del framework. Nunca evidencia real ni datos sensibles. La key no se guarda ni se transmite a ningún otro destino.</p>
+          <div class="form-row">
+            <label class="title">Endpoint</label>
+            <input type="text" id="llm-endpoint" class="text-input" value="https://api.openai.com/v1/chat/completions" />
+          </div>
+          <div class="form-row">
+            <label class="title">Modelo</label>
+            <input type="text" id="llm-model" class="text-input" value="gpt-4o-mini" />
+          </div>
+          <div class="form-row">
+            <label class="title">API key (solo en memoria del navegador)</label>
+            <input type="password" id="llm-apikey" class="text-input" placeholder="sk-..." autocomplete="off" />
+          </div>
+          <button id="llm-generate-btn" class="btn-primary" type="button">Generar escenarios con IA ✨</button>
+          <div id="llm-status"></div>
+          <div id="llm-result"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -125,6 +146,7 @@
 
 <script src="data.js"></script>
 <script src="engine.js"></script>
+<script src="llm.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
