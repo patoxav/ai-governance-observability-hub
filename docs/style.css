@@ -125,6 +125,78 @@ main {
 .badge.bajo { background: var(--green); color: var(--navy); }
 .badge.medio { background: var(--amber); color: var(--navy); }
 .badge.crítico { background: var(--red); color: white; }
+.badge.pendiente { background: var(--gray); color: var(--navy); }
+
+/* Tribu / Célula grouping */
+.tribu-head {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 14px 0 2px;
+  letter-spacing: 0.3px;
+}
+.tribu-head:first-child { margin-top: 0; }
+.celula-head {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--gray);
+  margin: 2px 0 6px 4px;
+}
+.org-tag {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--gray);
+  text-transform: none;
+  margin-left: 8px;
+}
+
+/* Fase stepper */
+.fase-stepper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 10px 0 18px;
+}
+.fase-step {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background: var(--navy-2);
+  color: var(--gray);
+}
+.fase-step.current {
+  background: var(--accent);
+  color: var(--navy);
+}
+.fase-arrow { color: var(--gray); font-size: 13px; padding: 0 2px; }
+
+.scenario-list {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.umbral-tag {
+  display: block;
+  font-size: 10px;
+  color: var(--gray);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+input[type="text"] {
+  width: 100%;
+  background: var(--navy-2);
+  color: var(--light);
+  border: 1px solid #2a4468;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+}
 
 /* Health score */
 .score-row { display: flex; align-items: center; gap: 24px; margin-bottom: 18px; }
@@ -152,6 +224,7 @@ main {
 .status-pill.ready { background: var(--green); color: var(--navy); }
 .status-pill.conditional { background: var(--amber); color: var(--navy); }
 .status-pill.notready { background: var(--red); color: white; }
+.status-pill.pending { background: var(--gray); color: var(--navy); }
 
 .checklist-item {
   display: flex;

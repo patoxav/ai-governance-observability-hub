@@ -9,14 +9,14 @@
 <body>
 
 <header>
-  <div class="kicker">MVP · Demo funcional sobre datos sintéticos</div>
+  <div class="kicker">MVP · Demo funcional sobre datos sintéticos · Alineado al flujo real del banco</div>
   <h1>AI Governance Observability Hub</h1>
-  <p>Gobierno existente + evidencias → AI Health, Riesgo y Certification Readiness, en vivo.</p>
+  <p>Opera el Framework de Calidad en IA ya existente (fases Inicio → Cierre) y lo convierte en AI Health, Dictamen de Calidad y portafolio por Tribu/Célula, en vivo.</p>
 </header>
 
 <nav class="tabs">
   <button data-view="portfolio" class="active">Governance Observatory</button>
-  <button data-view="readiness">Certification Readiness</button>
+  <button data-view="readiness">Dictamen de Calidad</button>
   <button data-view="assessment">Assessment</button>
   <button data-view="artifacts">Artefactos de Gobierno</button>
 </nav>
@@ -27,20 +27,20 @@
   <section id="view-portfolio" class="view active">
     <div class="grid-2">
       <div>
-        <span class="section-label">Portafolio de iniciativas (sintético)</span>
+        <span class="section-label">Portafolio por Tribu / Célula (sintético)</span>
         <div class="portfolio-list" id="portfolio-list"></div>
       </div>
       <div class="card" id="observatory-panel"></div>
     </div>
   </section>
 
-  <!-- VIEW 2: CERTIFICATION READINESS -->
+  <!-- VIEW 2: DICTAMEN DE CALIDAD (post-ejecución) -->
   <section id="view-readiness" class="view">
     <div class="grid-2">
       <div>
         <span class="section-label">Selecciona iniciativa</span>
         <div class="portfolio-list" id="portfolio-list-2"></div>
-        <p class="note">Marca/desmarca evidencias para ver cómo cambia el Readiness Score y los bloqueantes — en tiempo real.</p>
+        <p class="note">El Dictamen se emite tras ejecutar los casos de prueba (fases Ejecución/Cierre). Marca/desmarca resultados y entregables para ver cómo cambia el veredicto — en tiempo real.</p>
       </div>
       <div class="card" id="readiness-panel"></div>
     </div>
@@ -50,16 +50,20 @@
   <section id="view-assessment" class="view">
     <div class="grid-2">
       <div class="card">
-        <span class="section-label">Caracterización de la iniciativa</span>
+        <span class="section-label">Caracterización de la iniciativa (Inicio / Planificación / Diseño)</span>
         <div class="form-row">
-          <label class="title">¿Qué patrones usa?</label>
+          <label class="title">Nombre de la iniciativa / objeto de prueba</label>
+          <input type="text" id="inp-nombre" placeholder="Ej. Asesor Virtual RAG v2" />
+        </div>
+        <div class="form-row">
+          <label class="title">¿Qué tipo(s) de solución usa?</label>
           <div class="chip-group" id="chip-patterns">
             <div class="chip" data-val="RAG">RAG</div>
             <div class="chip" data-val="MCP">MCP</div>
             <div class="chip" data-val="Agentic">Agentes</div>
+            <div class="chip" data-val="Clasificador">Clasificación</div>
             <div class="chip" data-val="Voz">Voz</div>
             <div class="chip" data-val="Multiagente">Multiagente</div>
-            <div class="chip" data-val="Clasificación">Clasificación</div>
           </div>
         </div>
         <div class="form-row">
@@ -93,17 +97,25 @@
   <!-- VIEW 4: ARTEFACTOS DE GOBIERNO -->
   <section id="view-artifacts" class="view">
     <div class="card" style="margin-bottom:16px;">
-      <span class="section-label">Quality Gate — pesos y umbral por dimensión</span>
+      <span class="section-label">Quality Gate — 5 pilares y peso en el AI Health Score</span>
       <table class="gov-table" id="gate-table"></table>
     </div>
     <div class="card" style="margin-bottom:16px;">
-      <span class="section-label">RACI — responsabilidades del proceso</span>
+      <span class="section-label">Flujo de pruebas del banco — qué cubre el Hub en cada fase</span>
+      <table class="gov-table" id="fases-table"></table>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <span class="section-label">RACI — responsabilidades por fase del proceso</span>
       <table class="gov-table" id="raci-table"></table>
     </div>
+    <div class="card" style="margin-bottom:16px;">
+      <span class="section-label">Paquete auditable — entregables requeridos para el Dictamen</span>
+      <table class="gov-table" id="entregables-table"></table>
+    </div>
     <div class="card">
-      <span class="section-label">Checklist de evidencias por framework (extracto)</span>
+      <span class="section-label">Checklist de métricas por tipo de solución (extracto)</span>
       <div id="checklist-artifact"></div>
-      <p class="note">Extensibilidad: agregar un nuevo framework (p. ej. Voz) consiste en declarar su checklist en data.js; el motor de cálculo (engine.js) no cambia.</p>
+      <p class="note">Extensibilidad: agregar un nuevo tipo de solución (p. ej. Voz) consiste en declarar su checklist en data.js; el motor de cálculo (engine.js) no cambia.</p>
     </div>
   </section>
 
