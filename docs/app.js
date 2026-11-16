@@ -269,7 +269,44 @@ function renderAssessment() {
 
     ${out.tiposSinCobertura.length ? `<p class="note">Tipos seleccionados sin checklist cargado aún en este MVP: <strong>${out.tiposSinCobertura.join(", ")}</strong> (extensión futura, ver pestaña Artefactos).</p>` : ""}
   `;
+
+  // Contexto disponible para el botón de generación asistida por IA (ver listener más abajo).
+  lastAssessmentContext = { nombre, tipos: answers.tipos, riskProfile, metricasAplicables: out.metricasAplicables };
 }
+
+let lastAssessmentContext = null;
+
+document.getElementById("llm-generate-btn").addEventListener("click", async () => {
+  const statusEl = document.getElementById("llm-status");
+  const resultEl = document.getElementById("llm-result");
+  const btn = document.getElementById("llm-generate-btn");
+
+  if (!lastAssessmentContext) {
+    statusEl.innerHTML = `<p class="note">Completa primero el Assessment (nombre + tipo de solución) para tener contexto.</p>`;
+    return;
+  }
+
+  const endpoint = document.getElementById("llm-endpoint").value.trim();
+  const model = document.getElementById("llm-model").value.trim();
+  const apiKey = document.getElementById("llm-apikey").value.trim();
+
+  btn.disabled = true;
+  statusEl.innerHTML = `<p class="note">Generando escenarios con el modelo seleccionado…</p>`;
+  resultEl.innerHTML = "";
+
+  const res = await generateScenariosWithLLM({ endpoint, apiKey, model, context: lastAssessmentContext });
+
+  btn.disabled = false;
+
+  if (!res.ok) {
+    statusEl.innerHTML = `<p class="note" style="color:var(--amber)">⚠ ${res.error}</p>`;
+    resultEl.innerHTML = "";
+    return;
+  }
+
+  statusEl.innerHTML = `<p class="note" style="color:var(--green)">✓ ${res.scenarios.length} escenario(s) generado(s) por IA sobre la caracterización de esta iniciativa.</p>`;
+  resultEl.innerHTML = `<ul class="scenario-list">${res.scenarios.map((s) => `<li>${s}</li>`).join("")}</ul>`;
+});
 
 // ---------------- ARTEFACTOS DE GOBIERNO ----------------
 function renderArtifacts() {
