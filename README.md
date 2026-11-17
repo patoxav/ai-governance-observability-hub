@@ -9,4 +9,7 @@ Voz, Clasificación) en una visión ejecutiva de preparación y certificación.
 ## Contenido de este repositorio
 
 - `AI_Governance_Observability_Hub.md` — contenido completo (láminas, storytelling, mockups, argumentario)
+- `MANUAL_USO.md` — manual rápido para clonar el repo y correr el MVP (`docs/`) en local
+- `docs/` — MVP funcional (también servido vía GitHub Pages)
+- `deliverables/` — presentación (`.pptx`/`.pdf`) y zips descargables
 - Ver la sección **Releases** para descargar la presentación en `.pptx` y `.pdf`
